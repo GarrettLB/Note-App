@@ -1,4 +1,5 @@
 const express = require('express')
+const fs = require('fs')
 const path = require('path')
 const db = require("./db/db.json")
 
@@ -21,18 +22,42 @@ app.get('/notes', (req, res) => {
     res.sendFile(path.join(__dirname, 'public/notes.html'))
 })
 
-// * Route for fetching notes *
+// * Get route for fetching notes *
 app.get('/api/notes', (req, res) => {
     res.json(db)
 })
 
+// * Post route for new notes
 app.post('/api/notes', (req, res) => {
     console.log(`A ${req.method} request was received`)
 
     console.log(req.body)
     const {title, text} = req.body
 
-    console.log(title, text)
+    const newNote = {
+        title,
+        text,
+    }
+
+    fs.readFile('./db/db.json', 'utf8', (err, data) => {
+        if (err) {
+          console.error(err);
+        } else {
+          
+          const existingNotes = JSON.parse(data);
+  
+          existingNotes.push(newNote)
+  
+          fs.writeFile('./db/db.json', JSON.stringify(existingNotes, null, 2), (error) => {
+                if (error) {
+                    console.error(error)
+                } else { 
+                    console.log('Your new note was received and appended')
+                    res.send("Your new note was received and appended")
+                } 
+            });
+        }
+    }); 
 })
 
 app.listen(PORT, () => {
