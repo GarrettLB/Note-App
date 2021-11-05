@@ -6,9 +6,14 @@ const PORT = 3001
 
 app.use(express.static('public'))
 
-// Homepage 
-app.get('/', (req,res) => {
+// * Homepage *
+app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public/index.html'))
+})
+
+// * Notes page *
+app.get('/notes', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public/notes.html'))
 })
 
 app.listen(PORT, () => {
