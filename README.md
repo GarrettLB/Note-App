@@ -2,10 +2,10 @@
 
 ## Description
 
-Are you a buisiness owner or manager of a company and need to keep important things written down and easy to access?
+Are you a business owner or manager of a company and need to keep important things written down and easy to access?
 Give my note app a try! 
-Feauter include: Title and Comment sections for each note, each note is stored on a database in the server allowing them to persist,
-delete button allowing you to clear that are no longer needed, clicking on saved notes in the left column populates them into the right column for viewing.
+Features include: Title and Comment sections for each note - Each note is stored on a database in the server, allowing them to persist -
+Delete button that allows you to clear notes that are no longer needed - When clicked, saved notes in the left column populate into the right column for viewing.
 
 ## Technologies
 * Node.js / express
