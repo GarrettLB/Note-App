@@ -12,6 +12,10 @@ app.use(express.static('public'))
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+function ranId() {
+    return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
+}
+
 // * Notes page *
 app.get('/notes', (req, res) => {
     res.sendFile(path.join(__dirname, 'public/notes.html'))
@@ -36,9 +40,12 @@ app.post('/api/notes', (req, res) => {
     console.log(`A ${req.method} request was received`)
 
     const {title, text} = req.body
+    const Id = ranId()
+    
     const newNote = {
         title,
         text,
+        id: Id
     }
 
     fs.readFile('./db/db.json', 'utf8', (err, data) => {
