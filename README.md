@@ -19,5 +19,5 @@ delete button allowing you to clear that are no longer needed, clicking on saved
 https://glb-note-app.herokuapp.com/
 
 ## Screenshots
-<img src="">
-<img src="">
+<img src="/public/assets/images/HomepageSS.png">
+<img src="/public/assets/images/NotepageSS.png">
